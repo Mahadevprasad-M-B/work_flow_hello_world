@@ -1,0 +1,10 @@
+name: access_id_workflow
+
+on: [push]
+
+jobs:
+        print-github-var:
+                runs-on: ubuntu-latest
+                steps:
+                        - name: Print access_id
+                          run: echo "The variable is ${{vars.ACCESS_ID}}"
