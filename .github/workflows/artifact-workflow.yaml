@@ -1,6 +1,11 @@
-name: Artifacts Upload and download
+name: Artifacts
 
-on: [push]
+on: 
+  push:
+    branches: 
+      - main
+
+  workflow_dispatch: 
 
 jobs:
   create_artifact:
