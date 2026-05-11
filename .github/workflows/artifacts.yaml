@@ -1,0 +1,54 @@
+name: Artifacts Upload and download
+
+on: [push]
+
+jobs:
+  job_1:
+    name: Add 3 and 4
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 4 > math_hw.txt
+      - name: upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: homework_pre
+          path: home_work.txt
+
+  job_2:
+    name: Multiply by 9
+    needs: job_1
+    runs-on: ubuntu-latest
+    steps:
+      - name: download artifacts
+        uses:  actions/download-artifact@v7
+        with:
+          name: homework_pre
+
+      - shell: bash
+        run: |
+          value= `cat home_work.txt`
+          expr $value /* 9 > home_work.txt
+
+      - name: upload artifacts again
+        uses: actions/upload-artifact@v7
+        with:
+          name: homework_final
+          path: home_work.txt
+          
+  job_3:
+    name: Display services
+    needs: job_2
+    runs-on: ubuntu-latest
+    steps: 
+      - name: download artifact
+        uses: actions/download-artifact@v7
+        with: 
+          name: homework_final
+
+      - shell: bash
+        run: |
+          value = `cat home_work.txt`
+          echo "the result is $value"
+      
