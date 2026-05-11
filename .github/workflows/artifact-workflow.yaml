@@ -1,10 +1,9 @@
-name: artifact-workflow
+name: Job Artifacts and Outputs
 
 on: 
   push:
     branches: 
       - main
-
   workflow_dispatch: 
 
 jobs:
@@ -33,6 +32,4 @@ jobs:
           name: sample-text
 
       - shell: bash
-        run: |
-          value=`cat sample.txt`
-          echo $value
+        run: cat sample.txt
