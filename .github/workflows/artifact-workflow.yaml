@@ -24,7 +24,6 @@ jobs:
           path: sample.txt
 
   use_artifact:
-    name: Multiply by 9
     needs: create_artifact
     runs-on: ubuntu-latest
     steps:
