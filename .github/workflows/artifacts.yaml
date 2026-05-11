@@ -28,7 +28,7 @@ jobs:
 
       - shell: bash
         run: |
-          value= `cat home_work.txt`
+          value=`cat home_work.txt`
           expr $value /* 9 > home_work.txt
 
       - name: upload artifacts again
@@ -49,6 +49,6 @@ jobs:
 
       - shell: bash
         run: |
-          value = `cat home_work.txt`
+          value=`cat home_work.txt`
           echo "the result is $value"
       
