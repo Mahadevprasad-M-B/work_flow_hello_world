@@ -9,9 +9,9 @@ jobs:
     steps:
       - shell: bash
         run: |
-          expr 3 + 4 > math_hw.txt
+          expr 3 + 4 > home_work.txt
       - name: upload artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: homework_pre
           path: home_work.txt
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download artifacts
-        uses:  actions/download-artifact@v7
+        uses:  actions/download-artifact@v4
         with:
           name: homework_pre
 
@@ -32,18 +32,18 @@ jobs:
           expr $value /* 9 > home_work.txt
 
       - name: upload artifacts again
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: homework_final
           path: home_work.txt
           
-  job_3:
+  job_3:  
     name: Display services
     needs: job_2
     runs-on: ubuntu-latest
     steps: 
       - name: download artifact
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v4
         with: 
           name: homework_final
 
